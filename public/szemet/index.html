@@ -85,11 +85,10 @@
                 let category = categories[index % categories.length];
                 let firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
                 let firstThursday = (firstDayOfMonth.getDay() <= 4) ? 4 - firstDayOfMonth.getDay() : 11 - firstDayOfMonth.getDay();
-                let secondThursday = firstThursday + 7;
 
-                let isSecondThursday = new Date(date.getFullYear(), date.getMonth(), secondThursday).getDate() === date.getDate();
+                let isFirstThursday = new Date(date.getFullYear(), date.getMonth(), firstThursday).getDate() === date.getDate();
 
-                let extraDay = isSecondThursday ? new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toLocaleDateString("hu-HU", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : null;
+                let extraDay = isFirstThursday ? new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toLocaleDateString("hu-HU", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : null;
                 dates.push({ 
                     date: date.toLocaleDateString("hu-HU", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }), 
                     category, 
